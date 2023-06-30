@@ -1,23 +1,17 @@
 <template>
-  <div class="register">
+  <div class="login">
     <div class="container">
-      <h1 class="register__title">Sign up</h1>
-      <router-link class="link" :to="{name: 'login'}">
-        Have an account?
+      <h1 class="login__title">Sign in</h1>
+      <router-link class="link" :to="{name: 'register'}">
+        Need an account?
       </router-link>
-      <div class="register__form-wrapper">
+      <div class="login__form-wrapper">
         <app-validation-errors
             v-if="validationErrors"
-            class="register__errors"
+            class="login__errors"
             :errors="validationErrors"
         />
-        <form class="register__form" @submit.prevent="onSubmit">
-          <app-input
-              v-model="username"
-              :value="username"
-              type="text"
-              placeholder="Username"
-          />
+        <form class="login__form" @submit.prevent="onSubmit">
           <app-input
               v-model="email"
               :value="email"
@@ -31,7 +25,7 @@
               placeholder="Password"
           />
           <app-button
-              class="register__btn"
+              class="login__btn"
               view="green"
               size="big"
               :disabled="isSubmitting"
@@ -41,6 +35,7 @@
         </form>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -48,14 +43,13 @@
 import AppInput from '@/components/AppInput'
 import AppButton from '@/components/AppButton'
 import AppValidationErrors from '@/components/AppValidationErrors'
-import {mapState} from "vuex"
+import {mapState} from 'vuex'
 
 export default {
-  name: 'AppRegister',
+  name: 'AppLogin',
   components: {AppValidationErrors, AppButton, AppInput},
   data() {
     return {
-      username: '',
       email: '',
       password: ''
     }
@@ -68,8 +62,7 @@ export default {
   },
   methods: {
     async onSubmit() {
-      const request = await this.$store.dispatch('register', {
-        username: this.username,
+      const request = await this.$store.dispatch('login', {
         email: this.email,
         password: this.password
       })
@@ -82,7 +75,7 @@ export default {
 <style scoped lang="scss">
 @import '../assets/scss/vars';
 
-.register {
+.login {
 
   text-align: center;
 
