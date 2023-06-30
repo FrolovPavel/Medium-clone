@@ -21,7 +21,6 @@ const mutations = {
   },
 
   registerFailure(state, payload) {
-    console.log(payload)
     state.isSubmitting = false
     state.validationErrors = payload
   },

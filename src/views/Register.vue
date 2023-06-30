@@ -5,35 +5,41 @@
       <router-link class="link" :to="{name: 'login'}">
         Have an account?
       </router-link>
-      <form class="register__form" @submit.prevent="onSubmit">
-        <app-input
-            v-model="username"
-            :value="username"
-            type="text"
-            placeholder="Username"
+      <div class="register__form-wrapper">
+        <app-validation-errors
+            v-if="validationErrors"
+            class="register__errors"
+            :errors="validationErrors"
         />
-        <app-input
-            v-model="email"
-            :value="email"
-            type="email"
-            placeholder="Email"
-        />
-        <app-input
-            v-model="password"
-            :value="password"
-            type="password"
-            placeholder="Password"
-        />
-        <app-button
-            class="register__btn"
-            view="green"
-            size="big"
-            :disabled="isSubmitting"
-        >
-          Sign up
-        </app-button>
-      </form>
-
+        <form class="register__form" @submit.prevent="onSubmit">
+          <app-input
+              v-model="username"
+              :value="username"
+              type="text"
+              placeholder="Username"
+          />
+          <app-input
+              v-model="email"
+              :value="email"
+              type="email"
+              placeholder="Email"
+          />
+          <app-input
+              v-model="password"
+              :value="password"
+              type="password"
+              placeholder="Password"
+          />
+          <app-button
+              class="register__btn"
+              view="green"
+              size="big"
+              :disabled="isSubmitting"
+          >
+            Sign up
+          </app-button>
+        </form>
+      </div>
     </div>
   </div>
 </template>
@@ -41,10 +47,11 @@
 <script>
 import AppInput from "@/components/AppInput";
 import AppButton from "@/components/AppButton";
+import AppValidationErrors from "@/components/AppValidationErrors";
 
 export default {
   name: 'AppRegister',
-  components: {AppButton, AppInput},
+  components: {AppValidationErrors, AppButton, AppInput},
   data() {
     return {
       username: '',
@@ -55,16 +62,19 @@ export default {
   computed: {
     isSubmitting() {
       return this.$store.state.auth.isSubmitting
+    },
+    validationErrors() {
+      return this.$store.state.auth.validationErrors
     }
   },
   methods: {
     async onSubmit() {
-      await this.$store.dispatch('register', {
+      const request = await this.$store.dispatch('register', {
         username: this.username,
         email: this.email,
         password: this.password
       })
-      this.$router.push({name: 'home'})
+      request ? this.$router.push({name: 'home'}) : ''
     }
   }
 }
@@ -84,12 +94,19 @@ export default {
     margin-bottom: 10px;
   }
 
+  &__form-wrapper {
+    max-width: 540px;
+    margin: 20px auto 0;
+  }
+
+  &__errors {
+    text-align: left;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;
     gap: 18px;
-    max-width: 540px;
-    margin: 20px auto 0;
   }
 
   &__btn {
