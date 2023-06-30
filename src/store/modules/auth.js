@@ -1,4 +1,5 @@
 import authApi from '@/api/auth'
+import {setItem} from '@/helpers/persistanceStorage'
 
 const state = {
   isSubmitting: false,
@@ -30,10 +31,14 @@ const actions = {
   async register({commit}, payload) {
     try {
       commit('registerStart')
+
       const response = await authApi.register(payload)
+      await setItem('accessToken', response.data.user.token)
+
       commit('registerSuccess', response.data.user)
     } catch (error) {
       commit('registerFailure', error.response.data.errors)
+
       console.log(`Ошибка регистрации пользователя: ${error.message}`)
     }
   },
