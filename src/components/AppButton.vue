@@ -2,6 +2,7 @@
   <button
       class="button"
       :class="`button--${view} button--${size}`"
+      :disabled="disabled"
   >
     <slot/>
   </button>
@@ -18,6 +19,10 @@ export default {
     size: {
       type: String,
       default: 'small'
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -28,6 +33,11 @@ export default {
 
 .button {
   border-radius: $mainBR;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
 
   //view
   &--green {

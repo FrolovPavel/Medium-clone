@@ -1,5 +1,11 @@
 <template>
-  <input class="input" :type="type" :placeholder="placeholder"/>
+  <input
+      class="input"
+      :value="value"
+      :type="type"
+      :placeholder="placeholder"
+      @input="onInput"
+  />
 </template>
 
 <script>
@@ -13,6 +19,16 @@ export default {
     placeholder: {
       type: String,
       default: ''
+    },
+    value: {
+      type: String,
+      default: ''
+    }
+  },
+  methods: {
+    onInput(e) {
+      console.log(e)
+      this.$emit('input', e.target.value)
     }
   }
 }

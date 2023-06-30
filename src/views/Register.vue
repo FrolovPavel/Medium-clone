@@ -6,10 +6,30 @@
         Have an account?
       </router-link>
       <form class="register__form" @submit.prevent="onSubmit">
-        <app-input type="text" placeholder="Username"/>
-        <app-input type="email" placeholder="Email"/>
-        <app-input type="password" placeholder="Password"/>
-        <app-button class="register__btn" view="green" size="big">
+        <app-input
+            v-model="username"
+            :value="username"
+            type="text"
+            placeholder="Username"
+        />
+        <app-input
+            v-model="email"
+            :value="email"
+            type="email"
+            placeholder="Email"
+        />
+        <app-input
+            v-model="password"
+            :value="password"
+            type="password"
+            placeholder="Password"
+        />
+        <app-button
+            class="register__btn"
+            view="green"
+            size="big"
+            :disabled="isSubmitting"
+        >
           Sign up
         </app-button>
       </form>
@@ -25,9 +45,26 @@ import AppButton from "@/components/AppButton";
 export default {
   name: 'AppRegister',
   components: {AppButton, AppInput},
+  data() {
+    return {
+      username: '',
+      email: '',
+      password: ''
+    }
+  },
+  computed: {
+    isSubmitting() {
+      return this.$store.state.auth.isSubmitting
+    }
+  },
   methods: {
-    onSubmit() {
-      console.log('sub')
+    async onSubmit() {
+      await this.$store.dispatch('register', {
+        username: this.username,
+        email: this.email,
+        password: this.password
+      })
+      this.$router.push({name: 'home'})
     }
   }
 }
