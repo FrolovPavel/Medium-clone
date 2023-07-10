@@ -50,7 +50,7 @@
               </router-link>
             </li>
           </template>
-          <template v-if="!isLoggedIn">
+          <template v-if="isAnonymous">
             <li class="header__nav-item">
               <router-link
                   :to="{name: 'login'}"
@@ -77,15 +77,17 @@
 </template>
 
 <script>
-import {mapState} from 'vuex'
+// TODO сделать свг спрайт для иконок
+import {mapGetters} from "vuex";
 
 export default {
   name: 'AppHeader',
   computed: {
-    ...mapState({
-      currentUser: state => state.auth.currentUser,
-      isLoggedIn: state => state.auth.isLoggedIn
-    })
+    ...mapGetters([
+      'currentUser',
+      'isLoggedIn',
+      'isAnonymous'
+    ]),
   }
 }
 </script>

@@ -12,6 +12,9 @@
 import AppHeader from '@/components/Header'
 
 export default {
-  components: {AppHeader}
+  components: {AppHeader},
+  mounted() {
+    this.$store.dispatch('getCurrentUser')
+  }
 }
 </script>

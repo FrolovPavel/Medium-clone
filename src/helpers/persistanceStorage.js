@@ -9,7 +9,7 @@ export const getItem = (key) => {
 
 export const setItem = (key, data) => {
   try {
-    localStorage.getItem(key, JSON.stringify(data))
+    localStorage.setItem(key, JSON.stringify(data))
   } catch (error) {
     console.log(`Ошибка сохранения данных в localStorage ${error.message}`)
   }
