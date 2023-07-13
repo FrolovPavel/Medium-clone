@@ -2,39 +2,45 @@
   <div class="register">
     <div class="container">
       <h1 class="register__title">Sign up</h1>
-      <router-link class="link" :to="{name: 'login'}">
+      <router-link
+        class="link"
+        :to="{name: 'login'}"
+      >
         Have an account?
       </router-link>
       <div class="register__form-wrapper">
         <app-validation-errors
-            v-if="validationErrors"
-            class="register__errors"
-            :errors="validationErrors"
+          v-if="validationErrors"
+          class="register__errors"
+          :errors="validationErrors"
         />
-        <form class="register__form" @submit.prevent="onSubmit">
+        <form
+          class="register__form"
+          @submit.prevent="onSubmit"
+        >
           <app-input
-              v-model="username"
-              :value="username"
-              type="text"
-              placeholder="Username"
+            v-model="username"
+            :value="username"
+            type="text"
+            placeholder="Username"
           />
           <app-input
-              v-model="email"
-              :value="email"
-              type="email"
-              placeholder="Email"
+            v-model="email"
+            :value="email"
+            type="email"
+            placeholder="Email"
           />
           <app-input
-              v-model="password"
-              :value="password"
-              type="password"
-              placeholder="Password"
+            v-model="password"
+            :value="password"
+            type="password"
+            placeholder="Password"
           />
           <app-button
-              class="register__btn"
-              view="green"
-              size="big"
-              :disabled="isSubmitting"
+            class="register__btn"
+            view="green"
+            size="big"
+            :disabled="isSubmitting"
           >
             Sign up
           </app-button>
@@ -48,7 +54,7 @@
 import AppInput from '@/components/Input'
 import AppButton from '@/components/Button'
 import AppValidationErrors from '@/components/ValidationErrors'
-import {mapState} from "vuex"
+import {mapState} from 'vuex'
 
 export default {
   name: 'AppRegister',
@@ -73,8 +79,11 @@ export default {
         email: this.email,
         password: this.password
       })
-      request ? await this.$router.push({name: 'home'}) : ''
+      request ? await this.$router.push({name: 'globalFeed'}) : ''
     }
+  },
+  destroyed() {
+    this.$store.commit('clearValidationErrors')
   }
 }
 </script>

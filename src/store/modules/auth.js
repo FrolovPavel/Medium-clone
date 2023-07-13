@@ -16,6 +16,9 @@ const getters = {
 }
 
 const mutations = {
+  clearValidationErrors(state) {
+    state.validationErrors = null
+  },
   registerStart(state) {
     state.isSubmitting = true
     state.validationErrors = null

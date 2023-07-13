@@ -1,10 +1,10 @@
 <template>
   <input
-      class="input"
-      :value="value"
-      :type="type"
-      :placeholder="placeholder"
-      @input="onInput"
+    class="input"
+    :value="value"
+    :type="type"
+    :placeholder="placeholder"
+    @input="onInput"
   />
 </template>
 
@@ -43,7 +43,12 @@ export default {
   font-size: 20px;
   font-weight: 500;
   width: 100%;
-  color: $grey;
+  color: $dark;
+  transition: 0.25s border-color;
+
+  &::placeholder {
+    color: $grey;
+  }
 
   &:focus {
     border-color: $green;

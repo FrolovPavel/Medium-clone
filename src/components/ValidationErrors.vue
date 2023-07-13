@@ -1,9 +1,9 @@
 <template>
   <ul class="errors">
     <li
-        class="errors__item"
-        v-for="errorMessage in errorMessages"
-        :key="errorMessage"
+      class="errors__item"
+      v-for="errorMessage in errorMessages"
+      :key="errorMessage"
     >
       {{ errorMessage }}
     </li>

@@ -2,40 +2,45 @@
   <div class="login">
     <div class="container">
       <h1 class="login__title">Sign in</h1>
-      <router-link class="link" :to="{name: 'register'}">
+      <router-link
+        class="link"
+        :to="{name: 'register'}"
+      >
         Need an account?
       </router-link>
       <div class="login__form-wrapper">
         <app-validation-errors
-            v-if="validationErrors"
-            class="login__errors"
-            :errors="validationErrors"
+          v-if="validationErrors"
+          class="login__errors"
+          :errors="validationErrors"
         />
-        <form class="login__form" @submit.prevent="onSubmit">
+        <form
+          class="login__form"
+          @submit.prevent="onSubmit"
+        >
           <app-input
-              v-model="email"
-              :value="email"
-              type="email"
-              placeholder="Email"
+            v-model="email"
+            :value="email"
+            type="email"
+            placeholder="Email"
           />
           <app-input
-              v-model="password"
-              :value="password"
-              type="password"
-              placeholder="Password"
+            v-model="password"
+            :value="password"
+            type="password"
+            placeholder="Password"
           />
           <app-button
-              class="login__btn"
-              view="green"
-              size="big"
-              :disabled="isSubmitting"
+            class="login__btn"
+            view="green"
+            size="big"
+            :disabled="isSubmitting"
           >
             Sign up
           </app-button>
         </form>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -66,8 +71,11 @@ export default {
         email: this.email,
         password: this.password
       })
-      request ? await this.$router.push({name: 'home'}) : ''
+      request ? await this.$router.push({name: 'globalFeed'}) : ''
     }
+  },
+  destroyed() {
+    this.$store.commit('clearValidationErrors')
   }
 }
 </script>

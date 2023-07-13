@@ -1,5 +1,4 @@
 // COLORS
-
 $green: #5CB85C;
 $dark: #373a3c;
 $white: #fff;
@@ -7,7 +6,41 @@ $red: #B85C5C;
 $grey: #999;
 $greyLight: #00000033;
 
-
 // BORDER-RADIUS
 $mainBR: 5px;
 $bigBR: 10px;
+
+// SHADOWS
+$innerShadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.3), inset 0 -8px 8px -8px rgba(0, 0, 0, 0.3);
+
+// SIZES
+$mobile: 320px;
+$tablet: 768px;
+$notebook: 1366px;
+
+// MIXINS
+@mixin for-mobile {
+  @media screen and (min-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media screen and (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin for-notebook {
+  @media screen and (min-width: $notebook) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}

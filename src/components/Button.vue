@@ -1,8 +1,8 @@
 <template>
   <button
-      class="button"
-      :class="`button--${view} button--${size}`"
-      :disabled="disabled"
+    class="button"
+    :class="`button--${view} button--${size}`"
+    :disabled="disabled"
   >
     <slot/>
   </button>
@@ -43,12 +43,20 @@ export default {
   &--green {
     background-color: $green;
     color: $white;
+    border-color: $green;
+    transition: 0.25s background-color, 0.25s color;
+
+    @include hover {
+      background-color: $white;
+      color: $green;
+    }
   }
 
   //size
   &--big {
-    padding: 12px 24px;
+    padding: 11px 23px;
     font-size: 20px;
+    border: 1px solid;
   }
 }
 </style>
