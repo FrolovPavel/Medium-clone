@@ -1,19 +1,20 @@
 <template>
-  <section class="global-feed">
+  <section class="your-feed">
     <app-banner
-      class="global-feed__banner"
+      class="your-feed__banner"
       title="Medium Clone"
       text="A place to share your knowledge."
     />
-    <div class="container global-feed__container">
+    <div class="container your-feed__container">
       <app-popular-tags/>
-      <div class="global--feed__wrapper">
+      <div class="your-feed__wrapper">
         <app-feed-toggler/>
         <app-feed
-          class="global-feed__feed"
+          class="your-feed__feed"
           :apiUrl="apiUrl"
         />
       </div>
+
     </div>
 
   </section>
@@ -26,11 +27,11 @@ import AppPopularTags from '@/components/PopularTags'
 import AppFeedToggler from '@/components/FeedToggler'
 
 export default {
-  name: 'AppGlobalFeed',
+  name: 'AppYourFeed',
   components: {AppFeedToggler, AppPopularTags, AppBanner, AppFeed},
   data() {
     return {
-      apiUrl: '/articles'
+      apiUrl: '/articles/feed'
     }
   }
 }
@@ -39,7 +40,7 @@ export default {
 <style lang="scss">
 @import '../assets/scss/vars';
 
-.global-feed {
+.your-feed {
   padding-bottom: 40px;
 
   &__banner {

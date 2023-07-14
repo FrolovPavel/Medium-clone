@@ -27,9 +27,6 @@ export default {
       required: false,
       default: null
     }
-  },
-  mounted() {
-    console.log(Boolean(this.link))
   }
 }
 </script>
