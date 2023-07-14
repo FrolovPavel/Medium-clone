@@ -10,31 +10,24 @@
       class="popular-tags"
     >
       <h3 class="popular-tags__title">Popular Tags</h3>
-      <ul class="popular-tags__list">
-        <li
-          v-for="tag in popularTags"
-          :key="tag"
-          class="popular-tags__item"
-        >
-          <app-tag
-            :tagName="tag"
-            :link="{name: 'tag', params: {slug: tag}}"
-            view="fill"
-          />
-        </li>
-      </ul>
+      <app-tag-list
+        class="popular-tags__list"
+        :iterator="popularTags"
+        viewTags="fill"
+        :link="{name: 'tag'}"
+      />
     </div>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
-import AppTag from '@/components/Tag'
 import AppErrorMessage from '@/components/ErrorMessage'
+import AppTagList from '@/components/TagList'
 
 export default {
   name: 'AppPopularTags',
-  components: {AppErrorMessage, AppTag},
+  components: {AppTagList, AppErrorMessage},
   computed: {
     ...mapState({
       popularTags: state => state.popularTags.data,
@@ -53,19 +46,13 @@ export default {
 
 .popular-tags {
   height: fit-content;
-  padding: 10px;
+  padding: 15px 10px;
   background-color: $greyLight;
   border-radius: $mainBR;
 
   &__title {
     font-weight: 300;
     margin-bottom: 10px;
-  }
-
-  &__list {
-    display: flex;
-    gap: 8px 4px;
-    flex-wrap: wrap;
   }
 }
 

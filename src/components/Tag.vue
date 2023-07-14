@@ -5,7 +5,7 @@
     :class="`tag--${view}`"
     :to="link ? link : ''"
   >
-    {{ tagName }}
+    <slot/>
   </div>
 </template>
 
@@ -13,10 +13,6 @@
 export default {
   name: 'AppTag',
   props: {
-    tagName: {
-      type: String,
-      required: true
-    },
     view: {
       type: String,
       required: false,
@@ -37,17 +33,24 @@ export default {
 .tag {
   font-size: 14px;
   padding: 2px 6px;
+  border-radius: $bigBR;
 
   &--fill {
     color: $white;
     background-color: $dark;
-    border-radius: $bigBR;
+
     transition: 0.25s background-color;
 
     @include hover {
-      background-color: lighten($dark, 20%);
+      background-color: darken($dark, 20%);
     }
 
+  }
+
+  &--ghost {
+    background-color: transparent;
+    border: 1px solid $greyLight;
+    color: $greyLight;
   }
 }
 

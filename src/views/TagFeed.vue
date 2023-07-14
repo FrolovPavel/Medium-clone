@@ -6,7 +6,7 @@
       text="A place to share your knowledge."
     />
     <div class="container tag-feed__container">
-      <app-popular-tags/>
+      <app-popular-tags class="tag-feed__tags"/>
       <div class="tag-feed__wrapper">
         <app-feed-toggler :tagName="tagName"/>
         <app-feed
@@ -54,10 +54,19 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 30px;
 
     @include for-notebook {
       flex-direction: row-reverse;
     }
+  }
+
+  &__wrapper {
+    width: 75%;
+  }
+
+  &__tags {
+    width: 25%;
   }
 }
 </style>

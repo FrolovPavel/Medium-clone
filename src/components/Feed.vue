@@ -14,7 +14,7 @@
       v-if="feed"
       class="feed__content"
     >
-      <app-article
+      <app-article-preview
         v-for="(article, index) in feed.articles"
         :key="index"
         :article="article"
@@ -32,13 +32,13 @@
 <script>
 import {mapState} from 'vuex'
 import {limit} from '@/helpers/vars'
-import AppArticle from '@/components/Article'
+import AppArticlePreview from '@/components/ArticlePreview'
 import AppPagination from '@/components/Pagination'
 import AppErrorMessage from '@/components/ErrorMessage'
 
 export default {
   name: 'AppFeed',
-  components: {AppErrorMessage, AppArticle, AppPagination},
+  components: {AppErrorMessage, AppArticlePreview, AppPagination},
   props: {
     apiUrl: {
       type: String,

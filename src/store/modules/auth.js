@@ -9,6 +9,8 @@ const state = {
   isLoggedIn: null,
 }
 
+// TODO разобраться с гетерами нужны ли они
+
 const getters = {
   currentUser: (state) => state.currentUser,
   isLoggedIn: (state) => Boolean(state.isLoggedIn),

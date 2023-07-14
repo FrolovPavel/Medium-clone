@@ -6,8 +6,8 @@
       text="A place to share your knowledge."
     />
     <div class="container global-feed__container">
-      <app-popular-tags/>
-      <div class="global--feed__wrapper">
+      <app-popular-tags class="global-feed__tags"/>
+      <div class="global-feed__wrapper">
         <app-feed-toggler/>
         <app-feed
           class="global-feed__feed"
@@ -50,10 +50,19 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    gap: 30px;
 
     @include for-notebook {
       flex-direction: row-reverse;
     }
+  }
+
+  &__wrapper {
+    width: 75%;
+  }
+
+  &__tags {
+    width: 25%;
   }
 }
 </style>
