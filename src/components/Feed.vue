@@ -6,6 +6,10 @@
     >
       Loading...
     </div>
+    <app-error-message
+      v-if="error"
+      :message="error"
+    />
     <div
       v-if="feed"
       class="feed__content"
@@ -27,13 +31,14 @@
 
 <script>
 import {mapState} from 'vuex'
+import {limit} from '@/helpers/vars'
 import AppArticle from '@/components/Article'
 import AppPagination from '@/components/Pagination'
-import {limit} from '@/helpers/vars'
+import AppErrorMessage from '@/components/ErrorMessage'
 
 export default {
   name: 'AppFeed',
-  components: {AppArticle, AppPagination},
+  components: {AppErrorMessage, AppArticle, AppPagination},
   props: {
     apiUrl: {
       type: String,

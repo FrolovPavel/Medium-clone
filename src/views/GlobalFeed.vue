@@ -6,7 +6,8 @@
       text="A place to share your knowledge."
     />
     <div class="container global-feed__container">
-      <div style="width: 205px;">tags</div>
+      <app-popular-tags
+      />
       <app-feed
         class="global-feed__feed"
         :apiUrl="apiUrl"
@@ -18,11 +19,12 @@
 
 <script>
 import AppFeed from '@/components/Feed'
-import AppBanner from "@/components/Banner";
+import AppBanner from '@/components/Banner'
+import AppPopularTags from '@/components/PopularTags'
 
 export default {
   name: 'AppGlobalFeed',
-  components: {AppBanner, AppFeed},
+  components: {AppPopularTags, AppBanner, AppFeed},
   data() {
     return {
       apiUrl: '/articles'
