@@ -47,6 +47,10 @@ const mutations = {
     state.isSubmitting = false
     state.validationErrors = payload
   },
+  logout(state) {
+    state.currentUser = null
+    state.isLoggedIn = false
+  },
   getCurrentUserStart(state) {
     state.isLoading = true
   },
@@ -59,6 +63,16 @@ const mutations = {
     state.isLoading = false
     state.isLoggedIn = false
     state.currentUser = null
+  },
+  updateCurrentUserStart(state) {
+    state.isSubmitting = true
+  },
+  updateCurrentUserSuccess(state, payload) {
+    state.isSubmitting = false
+    state.currentUser = payload
+  },
+  updateCurrentUserFailure(state) {
+    state.isSubmitting = false
   },
 }
 
@@ -79,14 +93,17 @@ const actions = {
     try {
       commit('loginStart')
       const response = await authApi.login(payload)
-      console.log('response.data.user.token', response.data.user.token)
       await setItem('accessToken', response.data.user.token)
       commit('loginSuccess', response.data.user)
       return response
     } catch (error) {
       commit('loginFailure', error.response.data.errors)
-      console.log(`Ошибка регистрации пользователя: ${error.message}`)
+      console.log(`Ошибка авторизации пользователя: ${error.message}`)
     }
+  },
+  async logout({commit}) {
+    await setItem('accessToken', '')
+    commit('logout')
   },
   async getCurrentUser({commit}) {
     try {
@@ -97,6 +114,17 @@ const actions = {
     } catch (error) {
       commit('getCurrentUserFailure')
       console.log(`Ошибка получения данных пользователя: ${error.message}`)
+    }
+  },
+  async updateCurrentUser({commit}, {currentUserInput}) {
+    try {
+      commit('updateCurrentUserStart')
+      const response = await authApi.updateCurrentUser(currentUserInput)
+      commit('updateCurrentUserSuccess', response)
+      return response
+    } catch (error) {
+      commit('updateCurrentUserFailure')
+      console.log(`Ошибка обновления данных пользователя: ${error.message}`)
     }
   },
 }

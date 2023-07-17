@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="title || text"
+    v-if="!isLoggedIn && (title || text)"
     class="banner"
   >
     <h1 class="banner__title">{{ title }}</h1>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'AppBanner',
   props: {
@@ -20,6 +22,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  computed: {
+    ...mapGetters([
+      'isLoggedIn',
+    ]),
   }
 }
 </script>

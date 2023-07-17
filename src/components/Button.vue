@@ -35,9 +35,14 @@ export default {
 .button {
   border-radius: $mainBR;
 
+
+  &:focus {
+    border: 1px solid;
+  }
+
   &:disabled {
     opacity: 0.5;
-    cursor: not-allowed;
+    pointer-events: none;
   }
 
   //view
@@ -50,6 +55,18 @@ export default {
     @include hover {
       background-color: $white;
       color: $green;
+    }
+  }
+
+  &--red {
+    background-color: $red;
+    color: $white;
+    border-color: $red;
+    transition: 0.25s background-color, 0.25s color;
+
+    @include hover {
+      background-color: $white;
+      color: $red;
     }
   }
 

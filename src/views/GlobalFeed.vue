@@ -1,6 +1,7 @@
 <template>
   <section class="global-feed">
     <app-banner
+      v-if="!isLoggedIn"
       class="global-feed__banner"
       title="Medium Clone"
       text="A place to share your knowledge."
@@ -15,7 +16,6 @@
         />
       </div>
     </div>
-
   </section>
 </template>
 
@@ -32,7 +32,7 @@ export default {
     return {
       apiUrl: '/articles'
     }
-  }
+  },
 }
 </script>
 
