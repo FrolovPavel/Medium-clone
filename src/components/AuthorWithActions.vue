@@ -7,6 +7,7 @@
     <div class="action__buttons">
       <template v-if="isAuthor">
         <app-button
+          @click="test"
           view="ghost-grey"
         >
           Edit Article
@@ -49,6 +50,12 @@ export default {
     authorData: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    test() {
+      console.log(this.$route)
+      this.$router.push({name: 'editArticle', params: {slug: this.$route.params.slug}})
     }
   }
 }

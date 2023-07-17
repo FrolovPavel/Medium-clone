@@ -5,11 +5,23 @@ const getArticle = async (slug) => {
   return response.data.article
 }
 
-const deleteArticle = (slug) => {
-  return axios.delete(`/articles/${slug}`)
+const deleteArticle = async (slug) => {
+  return await axios.delete(`/articles/${slug}`)
+}
+
+const createArticle = async (articleInput) => {
+  const response = await axios.post('/articles', {article: articleInput})
+  return response.data.article
+}
+
+const updateArticle = async (slug, articleInput) => {
+  const response = await axios.put(`/articles/${slug}`, {article: articleInput})
+  return response.data.article
 }
 
 export default {
   getArticle,
   deleteArticle,
+  createArticle,
+  updateArticle,
 }
