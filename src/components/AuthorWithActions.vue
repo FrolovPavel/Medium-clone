@@ -7,12 +7,14 @@
     <div class="action__buttons">
       <template v-if="isAuthor">
         <app-button
-          @click="test"
+          icon="pen"
           view="ghost-grey"
+          @click="test"
         >
           Edit Article
         </app-button>
         <app-button
+          icon="trash"
           view="ghost-red"
           @click="$emit('delete')"
         >

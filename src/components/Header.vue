@@ -26,6 +26,10 @@
                 class="header__link"
                 active-class="header__link--active"
               >
+                <base-icon
+                  class="header__icon"
+                  icon="compose"
+                />
                 New Article
               </router-link>
             </li>
@@ -35,6 +39,10 @@
                 class="header__link"
                 active-class="header__link--active"
               >
+                <base-icon
+                  class="header__icon"
+                  icon="settings"
+                />
                 Setting
               </router-link>
             </li>
@@ -82,9 +90,11 @@
 <script>
 // TODO сделать свг спрайт для иконок
 import {mapGetters} from 'vuex'
+import BaseIcon from "@/components/icons/BaseIcon";
 
 export default {
   name: 'AppHeader',
+  components: {BaseIcon},
   computed: {
     ...mapGetters([
       'currentUser',
@@ -137,6 +147,11 @@ export default {
     @include hover {
       color: $dark;
     }
+  }
+
+  &__icon {
+    margin-right: 4px;
+    fill: $grey;
   }
 
   &__avatar {

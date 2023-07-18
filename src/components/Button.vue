@@ -5,13 +5,20 @@
     :disabled="disabled"
     @click="$emit('click')"
   >
+    <base-icon
+      v-if="icon"
+      :icon="icon"
+      class="button__icon"
+    />
     <slot/>
   </button>
 </template>
 
 <script>
+import BaseIcon from "@/components/icons/BaseIcon";
 export default {
   name: 'AppButton',
+  components: {BaseIcon},
   props: {
     view: {
       type: String,
@@ -20,6 +27,10 @@ export default {
     size: {
       type: String,
       default: 'small'
+    },
+    icon: {
+      type: String,
+      required: false
     },
     disabled: {
       type: Boolean,
@@ -33,7 +44,13 @@ export default {
 @import '../assets/scss/vars';
 
 .button {
+  display: flex;
+  align-items: center;
   border-radius: $mainBR;
+
+  &__icon {
+    margin-right: 4px;
+  }
 
 
   &:focus {
@@ -116,6 +133,11 @@ export default {
   &--small {
     padding: 4px 8px;
     font-size: 14px;
+
+    .button__icon {
+      width: 14px;
+      height: 14px;
+    }
   }
 }
 </style>
