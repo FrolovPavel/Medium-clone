@@ -4,7 +4,11 @@
       <app-author
         :authorData="authorData"
       />
-      <div>favorites</div>
+      <app-add-to-favorite
+        :isFavorite="article.favorited"
+        :slug="article.slug"
+        :count="article.favoritesCount"
+      />
     </div>
     <router-link
       :to="{name: 'article', params: {slug: article.slug}}"
@@ -34,10 +38,11 @@
 // TODO ограничить вывод заголовка и описания
 import AppAuthor from '@/components/Author'
 import AppTagList from '@/components/TagList'
+import AppAddToFavorite from '@/components/AddToFavorite'
 
 export default {
   name: 'AppArticlePreview',
-  components: {AppTagList, AppAuthor},
+  components: {AppAddToFavorite, AppTagList, AppAuthor},
   props: {
     article: {
       type: Object,

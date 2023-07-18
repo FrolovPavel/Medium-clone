@@ -85,6 +85,22 @@ const actions = {
       console.log(`Ошибка создания статьи: ${error.message}`)
     }
   },
+  async addToFavorite(_, {slug}) {
+    try {
+      const response = await articleApi.addToFavorite(slug)
+      return response
+    } catch (error) {
+      console.log(`Ошибка добавления like: ${error.message}`)
+    }
+  },
+  async removeFromFavorite(_, {slug}) {
+    try {
+      const response = await articleApi.removeFromFavorite(slug)
+      return response
+    } catch (error) {
+      console.log(`Ошибка удаления like: ${error.message}`)
+    }
+  },
 }
 
 export default {

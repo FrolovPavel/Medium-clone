@@ -19,9 +19,21 @@ const updateArticle = async (slug, articleInput) => {
   return response.data.article
 }
 
+const addToFavorite = async (slug) => {
+  const response = await axios.post(`/articles/${slug}/favorite`)
+  return response.data.article
+}
+
+const removeFromFavorite = async (slug) => {
+  const response = await axios.delete(`/articles/${slug}/favorite`)
+  return response.data.article
+}
+
 export default {
   getArticle,
   deleteArticle,
   createArticle,
   updateArticle,
+  addToFavorite,
+  removeFromFavorite,
 }
