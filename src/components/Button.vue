@@ -1,5 +1,7 @@
 <template>
   <button
+    :is="link ? 'router-link' : 'button'"
+    :to="link"
     class="button"
     :class="`button--${view} button--${size}`"
     :disabled="disabled"
@@ -30,6 +32,10 @@ export default {
     },
     icon: {
       type: String,
+      required: false
+    },
+    link: {
+      type: Object,
       required: false
     },
     disabled: {

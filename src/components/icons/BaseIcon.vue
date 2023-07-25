@@ -16,10 +16,11 @@ import IconCompose from '@/components/icons/IconCompose'
 import IconSettings from '@/components/icons/IconSettings'
 import IconTrash from '@/components/icons/IconTrash'
 import IconPen from '@/components/icons/IconPen'
+import IconPlus from '@/components/icons/IconPlus'
 
 export default {
   name: 'BaseIcon',
-  components: {IconHeart, IconCompose, IconSettings, IconTrash, IconPen},
+  components: {IconHeart, IconCompose, IconSettings, IconTrash, IconPen, IconPlus},
   props: {
     icon: {
       type: String,

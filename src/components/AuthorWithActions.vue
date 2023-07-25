@@ -9,7 +9,7 @@
         <app-button
           icon="pen"
           view="ghost-grey"
-          @click="test"
+          :link="{name: 'editArticle', params: {slug: $route.params.slug}}"
         >
           Edit Article
         </app-button>
@@ -53,17 +53,13 @@ export default {
       type: Object,
       required: true
     }
-  },
-  methods: {
-    test() {
-      console.log(this.$route)
-      this.$router.push({name: 'editArticle', params: {slug: this.$route.params.slug}})
-    }
   }
 }
 </script>
 
 <style lang="scss">
+@import '../assets/scss/vars';
+
 .action {
   display: flex;
   align-items: center;
