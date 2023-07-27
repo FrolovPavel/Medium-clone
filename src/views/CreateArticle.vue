@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import AppArticleForm from '@/components/ArticleForm'
+import AppArticleForm from '@/components/Article/ArticleForm'
 import {mapState} from "vuex";
 
 export default {

@@ -25,8 +25,8 @@
 
 <script>
 import {mapState} from 'vuex'
-import AppUpdateUserForm from "@/components/UpdateUserForm";
-import AppButton from "@/components/Button";
+import AppUpdateUserForm from "@/components/Setting/UpdateUserForm";
+import AppButton from "@/components/UI/Button";
 
 export default {
   name: 'AppSettings',

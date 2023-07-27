@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import AppTag from '@/components/Tag'
+import AppTag from '@/components/Tag/Tag'
 
 export default {
   name: 'AppTagList',

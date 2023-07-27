@@ -84,7 +84,7 @@
               </router-link>
             </li>
           </template>
-          <template v-if="isAnonymous">
+          <template v-else>
             <li
               class="header__nav-item"
               @click="hideMenu"
@@ -118,8 +118,8 @@
 
 <script>
 import {mapGetters} from 'vuex'
-import BaseIcon from '@/components/icons/BaseIcon'
-import AppButton from '@/components/Button'
+import BaseIcon from '@/components/Icons/BaseIcon'
+import AppButton from '@/components/UI/Button'
 
 export default {
   name: 'AppHeader',
@@ -128,7 +128,6 @@ export default {
     ...mapGetters([
       'currentUser',
       'isLoggedIn',
-      'isAnonymous'
     ]),
   },
   methods: {
@@ -147,7 +146,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../assets/scss/vars";
+@import "../../assets/scss/vars";
 
 .header {
   padding: 16px 0;

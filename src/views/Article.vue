@@ -29,9 +29,9 @@
 
 <script>
 import {mapGetters, mapState} from 'vuex'
-import AppBannerArticle from '@/components/BannerArticle'
-import AppAuthorWithActions from '@/components/AuthorWithActions'
-import AppTagList from '@/components/TagList'
+import AppBannerArticle from '@/components/Article/BannerArticle'
+import AppAuthorWithActions from '@/components/Author/AuthorWithActions'
+import AppTagList from '@/components/Tag/TagList'
 
 export default {
   name: 'AppArticle',

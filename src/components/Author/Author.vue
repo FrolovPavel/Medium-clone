@@ -45,7 +45,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/vars';
+@import '../../assets/scss/vars';
 
 .author {
   display: flex;

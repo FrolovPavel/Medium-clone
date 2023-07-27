@@ -1,8 +1,5 @@
 <template>
-  <div
-    v-if="!isLoggedIn && (title || text)"
-    class="banner"
-  >
+  <div class="banner">
     <h1 class="banner__title">{{ title }}</h1>
     <p class="banner__text">{{ text }}</p>
   </div>
@@ -32,7 +29,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/vars';
+@import '../../assets/scss/vars';
 
 .banner {
   text-align: center;

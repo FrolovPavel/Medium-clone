@@ -87,7 +87,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/vars';
+@import '../../assets/scss/vars';
 
 .feed-toggle {
   overflow: hidden;

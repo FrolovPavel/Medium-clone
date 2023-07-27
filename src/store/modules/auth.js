@@ -14,7 +14,6 @@ const state = {
 const getters = {
   currentUser: (state) => state.currentUser,
   isLoggedIn: (state) => Boolean(state.isLoggedIn),
-  isAnonymous: (state) => state.isLoggedIn === false,
 }
 
 const mutations = {

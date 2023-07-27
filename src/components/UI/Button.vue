@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import BaseIcon from "@/components/icons/BaseIcon";
+import BaseIcon from "@/components/Icons/BaseIcon";
 export default {
   name: 'AppButton',
   components: {BaseIcon},
@@ -53,7 +53,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/vars';
+@import '../../assets/scss/vars';
 
 .button {
   display: flex;

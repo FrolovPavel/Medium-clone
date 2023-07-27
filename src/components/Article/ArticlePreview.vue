@@ -37,8 +37,8 @@
 // TODO сделать скелетоны
 // TODO ограничить вывод заголовка и описания
 import AppAuthor from '@/components/Author/Author'
-import AppTagList from '@/components/TagList'
-import AppAddToFavorite from '@/components/AddToFavorite'
+import AppTagList from '@/components/Tag/TagList'
+import AppAddToFavorite from '@/components/Favorite/AddToFavorite'
 
 export default {
   name: 'AppArticlePreview',
@@ -62,7 +62,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/vars';
+@import '../../assets/scss/vars';
 
 .article-preview {
   width: 100%;

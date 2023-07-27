@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import IconHeart from '@/components/icons/IconHeart'
-import IconCompose from '@/components/icons/IconCompose'
-import IconSettings from '@/components/icons/IconSettings'
-import IconTrash from '@/components/icons/IconTrash'
-import IconPen from '@/components/icons/IconPen'
-import IconPlus from '@/components/icons/IconPlus'
+import IconHeart from '@/components/Icons/IconHeart'
+import IconCompose from '@/components/Icons/IconCompose'
+import IconSettings from '@/components/Icons/IconSettings'
+import IconTrash from '@/components/Icons/IconTrash'
+import IconPen from '@/components/Icons/IconPen'
+import IconPlus from '@/components/Icons/IconPlus'
 
 export default {
   name: 'BaseIcon',

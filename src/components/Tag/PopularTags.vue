@@ -1,10 +1,9 @@
 <template>
-  <div
-    v-if="popularTags"
-    class="popular-tags"
-  >
+  <div class="popular-tags">
     <h3 class="popular-tags__title">Popular Tags</h3>
+    <app-tag-skeleton v-if="isLoading"/>
     <app-tag-list
+      v-else
       class="popular-tags__list"
       :iterator="popularTags"
       viewTags="fill"
@@ -15,11 +14,12 @@
 
 <script>
 import {mapState} from 'vuex'
-import AppTagList from '@/components/TagList'
+import AppTagList from '@/components/Tag/TagList'
+import AppTagSkeleton from '@/components/Tag/TagSkeleton'
 
 export default {
   name: 'AppPopularTags',
-  components: {AppTagList},
+  components: {AppTagList, AppTagSkeleton},
   computed: {
     ...mapState({
       popularTags: state => state.popularTags.data,
@@ -34,7 +34,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/vars';
+@import '../../assets/scss/vars';
 
 .popular-tags {
   height: fit-content;
@@ -43,7 +43,7 @@ export default {
   border-radius: $mainBR;
 
   &__title {
-    font-weight: 300;
+    font-weight: 500;
     margin-bottom: 10px;
   }
 }

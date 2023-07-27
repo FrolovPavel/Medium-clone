@@ -45,8 +45,8 @@
 </template>
 
 <script>
-import AppInput from '@/components/Input'
-import AppButton from '@/components/Button'
+import AppInput from '@/components/UI/Input'
+import AppButton from '@/components/UI/Button'
 import AppValidationErrors from '@/components/ValidationErrors'
 import {mapState} from 'vuex'
 

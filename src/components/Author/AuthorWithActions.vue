@@ -38,8 +38,8 @@
 </template>
 
 <script>
-import AppButton from '@/components/Button'
-import AppAuthor from '@/components/Author'
+import AppButton from '@/components/UI/Button'
+import AppAuthor from '@/components/Author/Author'
 
 export default {
   name: 'AppAuthorWithActions',
@@ -58,7 +58,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/vars';
+@import '../../assets/scss/vars';
 
 .action {
   display: flex;

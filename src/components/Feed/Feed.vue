@@ -1,19 +1,7 @@
 <template>
   <div class="feed">
-    <div
-      v-if="isLoading"
-      class="feed__loader"
-    >
-      Loading...
-    </div>
-    <app-error-message
-      v-if="error"
-      :message="error"
-    />
-    <div
-      v-if="feed"
-      class="feed__content"
-    >
+    <app-article-preview-skeleton v-if="isLoading"/>
+    <template v-if="!isLoading && feed.articles.length">
       <app-article-preview
         v-for="(article, index) in feed.articles"
         :key="index"
@@ -25,6 +13,12 @@
         :currentPage="currentPage"
         :url="baseUrl"
       />
+    </template>
+    <div
+      v-else
+      class="feed__empty"
+    >
+      There are no articles here :(
     </div>
   </div>
 </template>
@@ -32,13 +26,13 @@
 <script>
 import {mapState} from 'vuex'
 import {limit} from '@/helpers/vars'
-import AppArticlePreview from '@/components/ArticlePreview'
-import AppPagination from '@/components/Pagination'
-import AppErrorMessage from '@/components/ErrorMessage'
+import AppArticlePreview from '@/components/Article/ArticlePreview'
+import AppPagination from '@/components/Feed/Pagination'
+import AppArticlePreviewSkeleton from "@/components/Article/ArticlePreviewSkeleton";
 
 export default {
   name: 'AppFeed',
-  components: {AppErrorMessage, AppArticlePreview, AppPagination},
+  components: {AppArticlePreviewSkeleton, AppArticlePreview, AppPagination},
   props: {
     apiUrl: {
       type: String,
@@ -76,7 +70,6 @@ export default {
   },
   methods: {
     fetchFeed() {
-      console.log('hear')
       const divider = this.apiUrl.includes('?') ? '&' : '?'
       this.$store.dispatch('getFeed', {
         apiUrl: `${this.apiUrl}${divider}limit=${limit}&offset=${this.queryOffset}`
@@ -90,7 +83,14 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/scss/vars';
+
 .feed {
   width: 100%;
+
+  &__empty {
+    color: $grey;
+    padding: 20px 0;
+  }
 }
 </style>

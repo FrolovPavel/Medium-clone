@@ -19,10 +19,10 @@
 </template>
 
 <script>
-import AppFeed from '@/components/Feed'
-import AppBanner from '@/components/Banner'
-import AppPopularTags from '@/components/PopularTags'
-import AppFeedToggler from '@/components/FeedToggler'
+import AppFeed from '@/components/Feed/Feed'
+import AppBanner from '@/components/Feed/Banner'
+import AppPopularTags from '@/components/Tag/PopularTags'
+import AppFeedToggler from '@/components/Feed/FeedToggler'
 
 export default {
   name: 'AppMainFeed',

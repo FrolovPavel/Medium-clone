@@ -49,9 +49,9 @@
 
 <script>
 import AppValidationErrors from '@/components/ValidationErrors'
-import AppInput from '@/components/Input'
-import AppTextArea from '@/components/TextArea'
-import AppButton from '@/components/Button'
+import AppInput from '@/components/UI/Input'
+import AppTextArea from '@/components/UI/TextArea'
+import AppButton from '@/components/UI/Button'
 
 export default {
   name: 'AppArticleForm',

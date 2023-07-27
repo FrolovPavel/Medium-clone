@@ -18,9 +18,9 @@
 
 <script>
 import {mapGetters, mapState} from 'vuex'
-import AppBannerProfile from '@/components/BannerProfile'
-import AppFeedToggler from '@/components/FeedToggler'
-import AppFeed from "@/components/Feed";
+import AppBannerProfile from '@/components/Profile/BannerProfile'
+import AppFeedToggler from '@/components/Feed/FeedToggler'
+import AppFeed from "@/components/Feed/Feed";
 
 export default {
   name: 'AppUserProfile',

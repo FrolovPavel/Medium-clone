@@ -11,7 +11,7 @@
 @import './assets/scss/main.scss';
 </style>
 <script>
-import AppHeader from '@/components/Header'
+import AppHeader from '@/components/Header/Header'
 
 export default {
   components: {AppHeader},
