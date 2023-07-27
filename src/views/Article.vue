@@ -46,7 +46,7 @@ export default {
       'currentUser'
     ]),
     isAuthor() {
-      if (!this.article && !this.currentUser) {
+      if (!this.article || !this.currentUser) {
         return false
       }
       return this.article.author.username === this.currentUser.username
