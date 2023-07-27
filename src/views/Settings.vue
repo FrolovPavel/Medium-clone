@@ -55,6 +55,7 @@ export default {
 
 .settings {
   padding-top: 30px;
+  padding-bottom: 40px;
 
   &__container {
     max-width: 900px;

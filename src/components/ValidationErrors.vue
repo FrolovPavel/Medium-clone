@@ -34,6 +34,7 @@ export default {
 @import '../assets/scss/vars';
 
 .errors {
+  margin-bottom: 10px;
 
   &__item {
     color: $red;

@@ -78,6 +78,7 @@ export default {
 @import '../assets/scss/vars';
 
 .article {
+  padding-bottom: 40px;
 
   &__banner {
     margin-bottom: 32px;

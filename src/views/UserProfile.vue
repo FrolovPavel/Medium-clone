@@ -65,6 +65,8 @@ export default {
 
 <style lang="scss">
 .user-profile {
+  padding-bottom: 40px;
+
   &__banner {
     margin-bottom: 30px;
   }

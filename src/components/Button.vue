@@ -10,6 +10,7 @@
     <base-icon
       v-if="icon"
       :icon="icon"
+      :style="{marginRight: isNotEmptySlot ? '4px' : '0'}"
       class="button__icon"
     />
     <slot/>
@@ -42,6 +43,11 @@ export default {
       type: Boolean,
       default: false
     }
+  },
+  computed: {
+    isNotEmptySlot() {
+      return 'default' in this.$slots
+    }
   }
 }
 </script>
@@ -54,15 +60,6 @@ export default {
   align-items: center;
   border-radius: $mainBR;
 
-  &__icon {
-    margin-right: 4px;
-  }
-
-
-  &:focus {
-    border: 1px solid;
-  }
-
   &:disabled {
     opacity: 0.5;
     pointer-events: none;
@@ -72,8 +69,13 @@ export default {
   &--green {
     background-color: $green;
     color: $white;
-    border-color: $green;
+    border: 1px solid $green;
     transition: 0.25s background-color, 0.25s color;
+
+    &:focus,
+    &:active {
+      border: 1px solid $green;
+    }
 
     @include hover {
       background-color: $white;
@@ -84,8 +86,13 @@ export default {
   &--red {
     background-color: $red;
     color: $white;
-    border-color: $red;
+    border: 1px solid $red;
     transition: 0.25s background-color, 0.25s color;
+
+    &:focus,
+    &:active {
+      border: 1px solid $red;
+    }
 
     @include hover {
       background-color: $white;
@@ -93,11 +100,21 @@ export default {
     }
   }
 
+  &--ghost {
+    background-color: transparent;
+    border: none;
+  }
+
   &--ghost-grey {
     background-color: transparent;
     border: 1px solid $grey;
     color: $grey;
     transition: 0.25s background-color, 0.25s color;
+
+    &:focus,
+    &:active {
+      border: 1px solid $grey;
+    }
 
     @include hover {
       background-color: $grey;
@@ -111,6 +128,11 @@ export default {
     color: $green;
     transition: 0.25s background-color, 0.25s color;
 
+    &:focus,
+    &:active {
+      border: 1px solid $green;
+    }
+
     @include hover {
       background-color: $green;
       color: $white;
@@ -123,6 +145,11 @@ export default {
     color: $red;
     transition: 0.25s background-color, 0.25s color;
 
+    &:focus,
+    &:active {
+      border: 1px solid $red;
+    }
+
     @include hover {
       background-color: $red;
       color: $white;
@@ -133,7 +160,6 @@ export default {
   &--big {
     padding: 11px 23px;
     font-size: 20px;
-    border: 1px solid;
   }
 
   &--small {

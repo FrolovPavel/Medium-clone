@@ -97,8 +97,15 @@ export default {
 
   &__footer {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    flex-direction: column;
+
+    @include for-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
   }
 
 }

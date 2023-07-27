@@ -46,9 +46,15 @@ export default {
 
   &__title {
     font-weight: 600;
-    font-size: 45px;
+    font-size: 40px;
     color: $white;
     margin-bottom: 30px;
+    text-align: center;
+
+    @include for-tablet {
+      text-align: left;
+      font-size: 45px;
+    }
   }
 }
 

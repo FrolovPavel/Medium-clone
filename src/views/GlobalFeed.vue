@@ -1,7 +1,6 @@
 <template>
   <section class="global-feed">
     <app-banner
-      v-if="!isLoggedIn"
       class="global-feed__banner"
       title="Medium Clone"
       text="A place to share your knowledge."
@@ -42,27 +41,31 @@ export default {
 .global-feed {
   padding-bottom: 40px;
 
-  &__banner {
-    margin-bottom: 24px;
-  }
-
   &__container {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 30px;
+    padding-top: 24px;
 
-    @include for-notebook {
+    @include for-tablet {
       flex-direction: row-reverse;
     }
   }
 
   &__wrapper {
-    width: 75%;
+    width: 100%;
+
+    @include for-tablet {
+      width: 75%;
+    }
   }
 
   &__tags {
-    width: 25%;
+    width: 100%;
+    @include for-tablet {
+      width: 25%;
+    }
   }
 }
 </style>

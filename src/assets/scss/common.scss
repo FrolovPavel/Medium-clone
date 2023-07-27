@@ -3,6 +3,10 @@
   font-size: 16px;
 }
 
+body {
+  scroll-behavior: smooth;
+}
+
 .container {
   max-width: 1140px;
   margin: 0 auto;
@@ -23,6 +27,12 @@ li {
   @include hover {
     color: darken($green, 15%);
   }
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100%;
+  margin: 0;
 }
 
 

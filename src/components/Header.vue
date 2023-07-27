@@ -8,8 +8,22 @@
         >
           Medium
         </router-link>
-        <ul class="header__nav-list">
-          <li class="header__nav-item">
+        <app-button
+          ref="burger"
+          class="header__burger"
+          view="ghost"
+          @click="toggleMenu"
+        >
+          <span></span>
+        </app-button>
+        <ul
+          ref="navList"
+          class="header__nav-list"
+        >
+          <li
+            class="header__nav-item"
+            @click="hideMenu"
+          >
             <router-link
               :to="{name: 'globalFeed'}"
               class="header__link"
@@ -20,7 +34,10 @@
             </router-link>
           </li>
           <template v-if="isLoggedIn">
-            <li class="header__nav-item">
+            <li
+              class="header__nav-item"
+              @click="hideMenu"
+            >
               <router-link
                 :to="{name: 'createArticle'}"
                 class="header__link"
@@ -33,7 +50,10 @@
                 New Article
               </router-link>
             </li>
-            <li class="header__nav-item">
+            <li
+              class="header__nav-item"
+              @click="hideMenu"
+            >
               <router-link
                 :to="{name: 'settings'}"
                 class="header__link"
@@ -46,7 +66,10 @@
                 Setting
               </router-link>
             </li>
-            <li class="header__nav-item">
+            <li
+              class="header__nav-item"
+              @click="hideMenu"
+            >
               <router-link
                 :to="{name: 'userProfile', params: {slug: currentUser.username}}"
                 class="header__link"
@@ -62,7 +85,10 @@
             </li>
           </template>
           <template v-if="isAnonymous">
-            <li class="header__nav-item">
+            <li
+              class="header__nav-item"
+              @click="hideMenu"
+            >
               <router-link
                 :to="{name: 'login'}"
                 class="header__link"
@@ -71,7 +97,10 @@
                 Sign In
               </router-link>
             </li>
-            <li class="header__nav-item">
+            <li
+              class="header__nav-item"
+              @click="hideMenu"
+            >
               <router-link
                 :to="{name: 'register'}"
                 class="header__link"
@@ -88,19 +117,31 @@
 </template>
 
 <script>
-// TODO сделать свг спрайт для иконок
 import {mapGetters} from 'vuex'
-import BaseIcon from "@/components/icons/BaseIcon";
+import BaseIcon from '@/components/icons/BaseIcon'
+import AppButton from '@/components/Button'
 
 export default {
   name: 'AppHeader',
-  components: {BaseIcon},
+  components: {AppButton, BaseIcon},
   computed: {
     ...mapGetters([
       'currentUser',
       'isLoggedIn',
       'isAnonymous'
     ]),
+  },
+  methods: {
+    toggleMenu() {
+      this.$refs.navList.classList.toggle('header__nav-list--active')
+      this.$refs.burger.$el.classList.toggle('header__burger--active')
+      document.body.classList.toggle('no-scroll')
+    },
+    hideMenu() {
+      this.$refs.navList.classList.remove('header__nav-list--active')
+      this.$refs.burger.$el.classList.remove('header__burger--active')
+      document.body.classList.remove('no-scroll')
+    }
   }
 }
 </script>
@@ -109,11 +150,12 @@ export default {
 @import "../assets/scss/vars";
 
 .header {
-  padding: 8px 0;
+  padding: 16px 0;
 
   &__nav {
     display: flex;
     align-items: center;
+    justify-content: space-between;
   }
 
   &__logo {
@@ -122,12 +164,89 @@ export default {
     font-size: 1.5rem;
   }
 
+  &__burger {
+    width: 28px;
+    height: 28px;
+    padding: 4px;
+    outline: none;
+    border: none;
+    z-index: 2;
+
+    span {
+      display: inline-block;
+      position: relative;
+      height: 2px;
+      width: 20px;
+      border-radius: $mainBR;
+      background-color: $dark;
+      transition: 0.25s background-color;
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        height: 2px;
+        width: 20px;
+        border-radius: $mainBR;
+        background-color: $dark;
+        transition: 0.25s transform;
+      }
+
+      &::before {
+        top: -6px;
+      }
+
+      &::after {
+        bottom: -6px;
+      }
+    }
+
+    &--active {
+      span {
+        background-color: transparent;
+
+        &::before {
+          transform: translate(0, 6px) rotate(45deg);
+        }
+
+        &::after {
+          transform: translate(0, -6px) rotate(-45deg);
+        }
+      }
+    }
+
+    @include for-tablet {
+      display: none;
+    }
+  }
+
   &__nav-list {
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
     gap: 16px;
-    margin-left: auto;
-    padding: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: $white;
+    z-index: 1;
+    transform: translateX(100%);
+    transition: 0.25s transform;
+
+    &--active {
+      transform: translateX(0);
+    }
+
+    @include for-tablet {
+      position: relative;
+      justify-content: flex-end;
+      flex-direction: row;
+      transform: translateX(0);
+    }
   }
 
   &__nav-item {
@@ -139,9 +258,14 @@ export default {
     align-items: center;
     color: $grey;
     transition: 0.3s color;
+    font-size: 40px;
 
     &--active {
       color: $dark;
+    }
+
+    @include for-tablet {
+      font-size: 16px;
     }
 
     @include hover {
@@ -150,8 +274,13 @@ export default {
   }
 
   &__icon {
+    display: none;
     margin-right: 4px;
     fill: $grey;
+
+    @include for-tablet {
+      display: block;
+    }
   }
 
   &__avatar {
@@ -159,8 +288,11 @@ export default {
     height: 26px;
     border-radius: 100%;
     margin-right: 5px;
+    display: none;
+
+    @include for-tablet {
+      display: block;
+    }
   }
-
 }
-
 </style>

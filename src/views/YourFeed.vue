@@ -52,18 +52,26 @@ export default {
     flex-direction: column;
     justify-content: space-between;
     gap: 30px;
+    padding-top: 24px;
 
-    @include for-notebook {
+    @include for-tablet {
       flex-direction: row-reverse;
     }
   }
 
   &__wrapper {
-    width: 75%;
+    width: 100%;
+
+    @include for-tablet {
+      width: 75%;
+    }
   }
 
   &__tags {
-    width: 25%;
+    width: 100%;
+    @include for-tablet {
+      width: 25%;
+    }
   }
 }
 </style>

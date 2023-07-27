@@ -63,9 +63,11 @@ export default {
 .action {
   display: flex;
   align-items: center;
+  flex-direction: column;
+  gap: 20px;
 
-  &__author {
-    margin-right: 20px;
+  @include for-tablet {
+    flex-direction: row;
   }
 
   &__buttons {

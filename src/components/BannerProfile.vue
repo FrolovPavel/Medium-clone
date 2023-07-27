@@ -18,7 +18,6 @@
         class="banner-profile__button"
         view="ghost-grey"
         icon="plus"
-        :link="{name: 'settings'}"
       >
         Follow {{ profile.username }}
       </app-button>
@@ -76,7 +75,7 @@ export default {
   }
 
   &__button {
-    margin-left: auto;
+    margin-top: 10px;
   }
 }
 </style>

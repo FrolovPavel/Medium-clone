@@ -53,7 +53,7 @@
             exact
             active-class="feed-toggle__link--active"
           >
-            # {{ tagName }}
+            <span># {{ tagName }}</span>
           </router-link>
         </li>
       </template>
@@ -90,20 +90,34 @@ export default {
 @import '../assets/scss/vars';
 
 .feed-toggle {
+  overflow: hidden;
 
   &__list {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 10px;
     border-bottom: 1px solid $greyLight;
     padding-bottom: 16px;
+
+    @include for-tablet {
+      gap: 20px;
+    }
   }
 
   &__link {
-    padding: 8px 16px;
+    padding: 8px 8px;
     color: $grey;
     transition: 0.25s color;
     position: relative;
+    white-space: nowrap;
+
+    span {
+      display: inline-block;
+      max-width: 85px;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
 
     &--active {
       color: $green;
