@@ -76,9 +76,8 @@ export default {
   },
   methods: {
     fetchFeed() {
+      console.log('hear')
       const divider = this.apiUrl.includes('?') ? '&' : '?'
-      console.log('this.apiUrl', this.apiUrl)
-      console.log('this.apiUrl.includes', this.apiUrl.includes('?'))
       this.$store.dispatch('getFeed', {
         apiUrl: `${this.apiUrl}${divider}limit=${limit}&offset=${this.queryOffset}`
       })

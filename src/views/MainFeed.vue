@@ -1,22 +1,20 @@
 <template>
-  <section class="your-feed">
+  <section class="global-feed">
     <app-banner
-      class="your-feed__banner"
+      class="global-feed__banner"
       title="Medium Clone"
       text="A place to share your knowledge."
     />
-    <div class="container your-feed__container">
-      <app-popular-tags class="your-feed__tags"/>
-      <div class="your-feed__wrapper">
-        <app-feed-toggler/>
+    <div class="container global-feed__container">
+      <app-popular-tags class="global-feed__tags"/>
+      <div class="global-feed__wrapper">
+        <app-feed-toggler :tagName="tagName"/>
         <app-feed
-          class="your-feed__feed"
+          class="global-feed__feed"
           :apiUrl="apiUrl"
         />
       </div>
-
     </div>
-
   </section>
 </template>
 
@@ -27,11 +25,25 @@ import AppPopularTags from '@/components/PopularTags'
 import AppFeedToggler from '@/components/FeedToggler'
 
 export default {
-  name: 'AppYourFeed',
+  name: 'AppMainFeed',
   components: {AppFeedToggler, AppPopularTags, AppBanner, AppFeed},
-  data() {
-    return {
-      apiUrl: '/articles/feed'
+  computed: {
+    tagName() {
+      return this.$route.params.slug
+    },
+    apiUrl() {
+      let routeName = this.$route.name
+
+      switch (routeName) {
+        case 'globalFeed':
+          return '/articles'
+        case 'yourFeed':
+          return '/articles/feed'
+        case 'tag':
+          return `/articles?tag=${this.tagName}`
+        default:
+          return '/articles'
+      }
     }
   }
 }
@@ -40,12 +52,8 @@ export default {
 <style lang="scss">
 @import '../assets/scss/vars';
 
-.your-feed {
+.global-feed {
   padding-bottom: 40px;
-
-  &__banner {
-    margin-bottom: 24px;
-  }
 
   &__container {
     display: flex;
