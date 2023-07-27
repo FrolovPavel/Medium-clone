@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import AppButton from "@/components/Button";
+import AppButton from "@/components/UI/Button";
 
 export default {
   name: 'AppBannerProfile',

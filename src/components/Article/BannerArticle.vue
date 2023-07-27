@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import AppAuthorWithActions from '@/components/AuthorWithActions'
+import AppAuthorWithActions from '@/components/Author/AuthorWithActions'
 
 export default {
   name: 'AppBannerArticle',

@@ -13,7 +13,8 @@
 </template>
 
 <script>
-import BaseIcon from "@/components/icons/BaseIcon";
+import BaseIcon from '@/components/Icons/BaseIcon'
+import {mapGetters} from 'vuex'
 
 export default {
   name: 'AppAddToFavorite',
@@ -38,8 +39,17 @@ export default {
       countOptimistic: this.count
     }
   },
+  computed: {
+    ...mapGetters([
+      'isLoggedIn',
+    ]),
+  },
   methods: {
     onClick() {
+      if (!this.isLoggedIn) {
+        this.$router.push({name: 'login'})
+        return
+      }
       if (this.isFavoriteOptimistic) {
         this.$store.dispatch('removeFromFavorite', {slug: this.slug})
         this.countOptimistic -= 1
@@ -55,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../assets/scss/vars';
+@import '../../assets/scss/vars';
 
 .favorite {
   display: flex;

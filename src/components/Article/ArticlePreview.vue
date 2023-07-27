@@ -36,7 +36,7 @@
 <script>
 // TODO сделать скелетоны
 // TODO ограничить вывод заголовка и описания
-import AppAuthor from '@/components/Author'
+import AppAuthor from '@/components/Author/Author'
 import AppTagList from '@/components/TagList'
 import AppAddToFavorite from '@/components/AddToFavorite'
 
